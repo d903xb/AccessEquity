@@ -1,0 +1,6 @@
+{
+  "database" : {
+    "url" : "jdbc:mysql:tcp://192.168.0.27:3000/;",
+    "dbtype" : "h2"
+  }
+}
