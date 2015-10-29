@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AccessEquity.iml" filepath="$PROJECT_DIR$/AccessEquity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AccessEquity.iml" filepath="$PROJECT_DIR$/AccessEquity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accesseq.iml" filepath="$PROJECT_DIR$/accesseq.iml" />
       <module fileurl="file://$PROJECT_DIR$/trade-loader/trade-loader.iml" filepath="$PROJECT_DIR$/trade-loader/trade-loader.iml" />
     </modules>
   </component>

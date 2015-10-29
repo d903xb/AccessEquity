@@ -26,5 +26,9 @@
         <module name="trade-loader" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="accesseq" target="1.5" />
+      <module name="trade-loader" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
