@@ -12,8 +12,8 @@ import java.sql.SQLException;
 public class LocalDatabase {
 
     private static String port = "9092";
-    public static void main(final String[] args) throws SQLException {
-
+    public static void main(final String[] args) throws SQLException, ClassNotFoundException {
+        Class.forName("org.h2.Driver");
         Server.createTcpServer("-tcpPort", port, "-tcpAllowOthers").start();
 
         ApplicationContext ctx =

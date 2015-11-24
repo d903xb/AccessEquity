@@ -29,7 +29,6 @@
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="booker" />
       </profile>
       <profile default="false" name="Annotation profile for localdatabase" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
@@ -44,13 +43,30 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
       </profile>
+      <profile default="false" name="Annotation profile for liquibase" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="liquibase" />
+      </profile>
+      <profile default="false" name="Annotation profile for netty-server" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="netty-server" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="booker" target="1.8" />
       <module name="database" target="1.8" />
       <module name="database-scripts" target="1.8" />
+      <module name="liquibase" target="1.8" />
       <module name="localdatabase" target="1.8" />
       <module name="localutil" target="1.8" />
+      <module name="netty" target="1.8" />
+      <module name="netty-server" target="1.8" />
       <module name="revoweb" target="1.8" />
     </bytecodeTargetLevel>
   </component>

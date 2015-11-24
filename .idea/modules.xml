@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RevoWeb.iml" filepath="$PROJECT_DIR$/.idea/RevoWeb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/revoweb/booker/booker.iml" filepath="$PROJECT_DIR$/revoweb/booker/booker.iml" />
       <module fileurl="file://$PROJECT_DIR$/revoweb/database/database.iml" filepath="$PROJECT_DIR$/revoweb/database/database.iml" />
-      <module fileurl="file://$PROJECT_DIR$/revoweb/database/database-scripts/database-scripts.iml" filepath="$PROJECT_DIR$/revoweb/database/database-scripts/database-scripts.iml" />
-      <module fileurl="file://$PROJECT_DIR$/revoweb/localutil/localdatabase/localdatabase.iml" filepath="$PROJECT_DIR$/revoweb/localutil/localdatabase/localdatabase.iml" />
-      <module fileurl="file://$PROJECT_DIR$/revoweb/localutil/localutil.iml" filepath="$PROJECT_DIR$/revoweb/localutil/localutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/revoweb/database/liquibase/liquibase.iml" filepath="$PROJECT_DIR$/revoweb/database/liquibase/liquibase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/revoweb/database/localdatabase/localdatabase.iml" filepath="$PROJECT_DIR$/revoweb/database/localdatabase/localdatabase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/revoweb/netty/netty.iml" filepath="$PROJECT_DIR$/revoweb/netty/netty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/revoweb/netty/netty-server/netty-server.iml" filepath="$PROJECT_DIR$/revoweb/netty/netty-server/netty-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/revoweb/revoweb.iml" filepath="$PROJECT_DIR$/revoweb/revoweb.iml" />
     </modules>
   </component>
