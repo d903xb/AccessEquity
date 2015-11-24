@@ -1,4 +1,4 @@
-package main.java.com.revosoft.web.database.local;
+package com.revosoft.web.database.local;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.springframework.beans.factory.annotation.Value;
