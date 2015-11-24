@@ -1,5 +1,5 @@
-package main.java.com.revosoft.web.database.local;
-import com.revosoft.web.database.local.DatabaseConfig;
+package com.revosoft.web.database.local;
+
 import lombok.extern.slf4j.Slf4j;
 import org.h2.tools.Server;
 import org.springframework.context.ApplicationContext;
