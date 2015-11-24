@@ -11,9 +11,12 @@
 
     <artifactId>database</artifactId>
     <packaging>pom</packaging>
+
     <modules>
-        <module>database-scripts</module>
+        <module>liquibase</module>
+        <module>localdatabase</module>
     </modules>
+
 
 
 </project>

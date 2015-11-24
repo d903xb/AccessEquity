@@ -6,6 +6,6 @@
 		<dbms type="h2" />
 	</preConditions>
 
-	<include file="releasesql\1.0\1.0-1.xml" relativeToChangelogFile="true" />
-	<include file="releasesql\1.0\1.0-2.xml" relativeToChangelogFile="true" />
+	<include file="releasesql\1.0\1.0-1.xml" relativeToChangelogFile="false" />
+
 </databaseChangeLog>
