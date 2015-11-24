@@ -16,8 +16,8 @@ public class BookerWebRouter implements WebRouter {
     public Object routeRequest (String uri, Values values) {
 
         if(uri.equals("/revoweb/booker")) {
-            return "{\n" +
-                    "                    name: \\\"Kingscross\\\",\n" +
+            return "{\n\r" +
+                    "                    name: \\\"Kingscross\\\",\n\r" +
                     "                    address1: \\\"8 York Road\\\",\n" +
                     "                    address2: \\\"Kingscross\\\",\n" +
                     "                    TownCity: \\\"London\\\",\n" +
@@ -142,9 +142,10 @@ public class BookerWebRouter implements WebRouter {
                     "                }\n" +
                     "                ]\n" +
                     "            },\n" +
-                    "            ],\n" +
-                    "            }";
+                    "      ],\n" +
+                    "};";
         }
+
         return "No Services for this URI";
     }
 

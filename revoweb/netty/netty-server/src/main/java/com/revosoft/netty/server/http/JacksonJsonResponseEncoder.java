@@ -33,6 +33,7 @@ public class JacksonJsonResponseEncoder extends ChannelOutboundHandlerAdapter {
 		String res;
 		try {
 			res = objectMapper.writeValueAsString(response.getPayload());
+			res = response.getPayload().toString();
 		} catch (Exception ex) {
 			ctx.fireExceptionCaught(ex);
 			return;

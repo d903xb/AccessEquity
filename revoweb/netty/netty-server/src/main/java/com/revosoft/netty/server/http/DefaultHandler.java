@@ -6,6 +6,8 @@ import io.netty.util.concurrent.EventExecutorGroup;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
 import com.revosoft.netty.server.http.routing.WebRouter;
@@ -25,9 +27,27 @@ public class DefaultHandler extends
 		this.router = router;
 	}
 
+	private boolean authenticateRequest(FullDecodedRequest decodedRequest) {
+		for(Map.Entry<String,String> entry : decodedRequest.getRequest().getHttpRequest().headers().entries()){
+			if(entry.getKey().equals("REVO-TOKEN")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	protected void channelRead0(final ChannelHandlerContext ctx,
 			final FullDecodedRequest decodedRequest) throws Exception {
+
+		System.out.println("authenticating request:");
+
+		if (!authenticateRequest(decodedRequest)) {
+			//ctx.fireExceptionCaught(new Exception("UNAUTHORIZED"));
+			ctx.writeAndFlush(new Response(decodedRequest.getRequest(),
+					"UNAUTHORIZED_TOKEN"));
+			return;
+		}
 
 		Callable<? extends Object> callable = new Provider(
 				decodedRequest.getPath(), decodedRequest.getValues(), router);

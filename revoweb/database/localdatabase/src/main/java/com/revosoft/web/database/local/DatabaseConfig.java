@@ -13,9 +13,10 @@ public class DatabaseConfig {
     private String url;
 
     @Bean
-    public javax.sql.DataSource h2DataSource(){
+    public javax.sql.DataSource h2DataSource() throws ClassNotFoundException {
+        Class.forName("org.h2.Driver");
         final JdbcDataSource ds = new JdbcDataSource();
-        ds.setURL("jdbc:h2:tcp://localhost/~/revosoft;MODE=MySQL");
+        ds.setURL("repository:h2:tcp://localhost/~/revosoft;MODE=MySQL");
         ds.setUser("sa");
         return ds;
     }

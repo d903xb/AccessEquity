@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.math.BigDecimal;
 
 @Data
-public class Trade {
+public class Booking {
 
     final private String isin;
     final private String partyA;
