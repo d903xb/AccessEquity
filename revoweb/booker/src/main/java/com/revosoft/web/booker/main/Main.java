@@ -1,9 +1,6 @@
 package com.revosoft.web.booker.main;
 
-import com.revosoft.web.booker.config.DatabaseConfig;
-import com.revosoft.web.booker.config.JmsConfig;
-import com.revosoft.web.booker.config.ServiceConfig;
-import com.revosoft.web.booker.config.PropertiesConfig;
+import com.revosoft.web.booker.config.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,6 +23,7 @@ public class Main {
                         PropertiesConfig.class,
                         DatabaseConfig.class,
                         JmsConfig.class,
+                        NettyServerConfig.class,
                         ServiceConfig.class);
 
          log.info("RevoWebBooker started successfully.");
