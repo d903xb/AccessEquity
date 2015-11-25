@@ -1,7 +1,24 @@
 package com.revosoft.web.booker.repository;
 
-/**
- * Created by steve on 24/11/2015.
- */
+
+import com.revosoft.web.booker.domain.Booking;
+import org.springframework.jdbc.core.JdbcOperations;
+
 public class BookingRepository {
+
+    public BookingRepository bookingRepository;
+    public JdbcOperations jdbcTemplate;
+
+    public BookingRepository(JdbcOperations jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void getBooking() {
+        String sql = "SELECT * FROM BOOKINGS WHERE ID = ?";
+
+        Booking booking = (Booking)jdbcTemplate.queryForObject(
+                sql, new Object[] { 1 }, new BookingRowMapper());
+
+        System.out.println("got booking : " + booking);
+    }
 }

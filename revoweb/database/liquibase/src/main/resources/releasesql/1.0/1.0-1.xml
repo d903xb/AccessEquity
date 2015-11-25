@@ -30,4 +30,18 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="3" author="bob">
+        <createTable tableName="bookings">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="client-name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client-address" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

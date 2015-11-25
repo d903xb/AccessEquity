@@ -1,6 +1,7 @@
 package com.revosoft.web.booker.domain;
 
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.math.BigDecimal;
@@ -8,11 +9,11 @@ import java.math.BigDecimal;
 @Data
 public class Booking {
 
-    final private String isin;
-    final private String partyA;
-    final private String partyB;
-    final private BigDecimal quantity;
-    final private BigDecimal unitPrice;
-    final private LocalDate tradeDate;
+    @Setter
+    private int id;
+    @Setter
+    private String name;
+    @Setter
+    private String address;
 
 }

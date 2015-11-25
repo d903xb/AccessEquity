@@ -39,8 +39,8 @@ public class DatabaseConfig {
         try {
             if (type != null && !type.equals("${database.type}") && type.equals("h2")) {
                 final ComboPooledDataSource ds = new ComboPooledDataSource();
-                ds.setDriverClass("com.h2.driver");
-                ds.setJdbcUrl("repository:h2:tcp://localhost/~/revosoft;MODE=MySQL");
+                ds.setDriverClass("org.h2.Driver");
+                ds.setJdbcUrl("jdbc:h2:tcp://localhost/~/revosoft;MODE=MySQL");
                 ds.setUser("sa");
                 ds.setMaxPoolSize(30);
                 ds.setMinPoolSize(10);
