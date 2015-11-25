@@ -13,6 +13,7 @@
         <module>database</module>
         <module>netty</module>
         <module>booker</module>
+        <module>authenticator</module>
     </modules>
 
     <properties>
