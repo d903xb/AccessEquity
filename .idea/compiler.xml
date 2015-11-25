@@ -57,16 +57,33 @@
         <processorPath useClasspath="true" />
         <module name="netty-server" />
       </profile>
+      <profile default="false" name="Annotation profile for authenticator" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="authenticator" />
+      </profile>
+      <profile default="false" name="Annotation profile for repository" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="repository" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authenticator" target="1.8" />
       <module name="booker" target="1.8" />
       <module name="database" target="1.8" />
       <module name="database-scripts" target="1.8" />
+      <module name="domain" target="1.8" />
       <module name="liquibase" target="1.8" />
       <module name="localdatabase" target="1.8" />
       <module name="localutil" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="netty-server" target="1.8" />
+      <module name="repository" target="1.8" />
       <module name="revoweb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
