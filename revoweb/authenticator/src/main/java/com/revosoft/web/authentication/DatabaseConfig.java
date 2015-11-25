@@ -4,6 +4,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -17,17 +19,10 @@ public class DatabaseConfig {
     @Value("${database.type}")
     private String type;
 
-  /*  @Bean
-    public DataSource dataSource(){
-
-        if(type!=null && !type.equals("${database.type}") && type.equals("h2")) {
-            final JdbcDataSource ds = new JdbcDataSource();
-            ds.setURL("repository:h2:tcp://localhost/~/revosoft;MODE=MySQL");
-            ds.setUser("sa");
-            return ds;
-        }
-        return null;
-    }*/
+    @Bean
+    public JdbcOperations jdbcTemplate(){
+        return new JdbcTemplate(c3poDataSource());
+    }
 
     @Bean
     public DataSource c3poDataSource()  {

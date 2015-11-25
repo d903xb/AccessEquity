@@ -1,4 +1,4 @@
-package com.revosoft.web.authentication.domain;
+package com.revosoft.web.domain;
 
 import lombok.Data;
 import lombok.Setter;

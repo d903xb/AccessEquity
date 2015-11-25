@@ -2,17 +2,19 @@ package com.revosoft.web.authentication.web.routing;
 
 
 import com.revosoft.netty.server.http.routing.WebRouter;
-import com.revosoft.web.authentication.domain.Credentials;
+import com.revosoft.web.database.repository.TokenRepository;
+import com.revosoft.web.domain.Credentials;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @Getter
@@ -20,19 +22,23 @@ import java.security.NoSuchAlgorithmException;
 @AllArgsConstructor
 public class AuthenticationWebRouter implements WebRouter {
 
+        private TokenRepository tokenRepository;
 
         public Object routeRequest (String uri, String valueJson) throws IOException {
 
-        if(uri.equals("/revoweb/authenticate")) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                final Credentials credentials = objectMapper.readValue(valueJson, Credentials.class);
+                if(uri.equals("/revoweb/authenticate")) {
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        final Credentials credentials = objectMapper.readValue(valueJson, Credentials.class);
 
-               return "{\n" +
-                       "\t\"Hash\" : \"" + hashText(credentials.getPassword()) + "\"\n" +
-                       "}";
-        }
+                        tokenRepository.create("stephen.day@dunelm.org.uk",
+                                UUID.randomUUID().toString(), LocalDateTime.from(LocalDateTime.now()));
 
-        return "No Services for this URI";
+                       return "{\n" +
+                               "\t\"Hash\" : \"" + hashText(credentials.getPassword()) + "\"\n" +
+                               "}";
+                }
+
+                return "No Services for this URI";
         }
 
 

@@ -1,6 +1,7 @@
 package com.revosoft.web.authentication.repository;
 
-import com.revosoft.web.authentication.domain.Credentials;
+
+import com.revosoft.web.domain.Credentials;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

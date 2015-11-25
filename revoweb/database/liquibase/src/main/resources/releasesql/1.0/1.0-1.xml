@@ -6,39 +6,36 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet id="1" author="bob">
-        <createTable tableName="department">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="active" type="boolean" defaultValueBoolean="true"/>
-        </createTable>
-    </changeSet>
 
-    <changeSet id="2" author="bob">
-        <createTable tableName="department2">
-            <column name="id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="name" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="active" type="boolean" defaultValueBoolean="true"/>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="3" author="bob">
+    <changeSet id="1.0-1/1" author="steveday">
         <createTable tableName="bookings">
-            <column name="id" type="int">
+            <column autoIncrement="true" name="id" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="client-name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
             <column name="client-address" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0-1/2" author="steveday">
+        <createTable tableName="token">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tokenHash" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiryDateTime" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activeStatus" type="boolean">
                 <constraints nullable="false"/>
             </column>
         </createTable>

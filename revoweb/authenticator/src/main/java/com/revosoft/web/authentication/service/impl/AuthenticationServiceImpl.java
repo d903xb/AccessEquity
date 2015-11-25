@@ -21,8 +21,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     public void run() {
-        AuthenticationRepository authenticationRepository = new AuthenticationRepository(jdbcTemplate);
-        authenticationRepository.getBooking();
         nettyServer.run();
 
     }

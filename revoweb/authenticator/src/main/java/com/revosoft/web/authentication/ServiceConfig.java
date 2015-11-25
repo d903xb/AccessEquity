@@ -19,14 +19,12 @@ public class ServiceConfig {
     @Autowired
     private DataSource dataSource;
 
-    @Bean
-    public JdbcOperations jdbcTemplate(){
-        return new org.springframework.jdbc.core.JdbcTemplate(dataSource);
-    }
+    @Autowired
+    private JdbcOperations jdbcOperations;
 
     @Bean
     public AuthenticationService bookerService () {
-        return new AuthenticationServiceImpl(jdbcTemplate() , webServer);
+        return new AuthenticationServiceImpl(jdbcOperations, webServer);
     }
 
 
