@@ -1,10 +1,12 @@
 package com.revosoft.netty.server.http.routing;
 
 
-import com.revosoft.netty.server.Values;
+import org.codehaus.jackson.JsonParseException;
+
+import java.io.IOException;
 
 public interface WebRouter {
 
-	 Object routeRequest(String path, Values values);
-	String toString();
+	 Object routeRequest(String path, String valueJson) throws IOException;
+	 String toString();
 }

@@ -50,7 +50,7 @@ public class DefaultHandler extends
 		}
 
 		Callable<? extends Object> callable = new Provider(
-				decodedRequest.getPath(), decodedRequest.getValues(), router);
+				decodedRequest.getPath(), decodedRequest.getValueJson(), router);
 
 		final Future<? extends Object> future = executor.submit(callable);
 

@@ -1,6 +1,6 @@
 package com.revosoft.web.authentication.service;
 
-public interface BookingService {
+public interface AuthenticationService {
 
     public void run();
 }

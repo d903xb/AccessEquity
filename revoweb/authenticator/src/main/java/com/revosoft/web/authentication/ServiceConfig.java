@@ -1,8 +1,8 @@
 package com.revosoft.web.authentication;
 
 import com.revosoft.netty.server.http.NettyServer;
-import com.revosoft.web.authentication.service.BookingService;
-import com.revosoft.web.authentication.service.impl.BookingServiceImpl;
+import com.revosoft.web.authentication.service.AuthenticationService;
+import com.revosoft.web.authentication.service.impl.AuthenticationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +25,8 @@ public class ServiceConfig {
     }
 
     @Bean
-    public BookingService bookerService () {
-        return new BookingServiceImpl(jdbcTemplate() , webServer);
+    public AuthenticationService bookerService () {
+        return new AuthenticationServiceImpl(jdbcTemplate() , webServer);
     }
 
 

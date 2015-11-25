@@ -1,6 +1,5 @@
 package com.revosoft.web.booker.web.routing;
 
-import com.revosoft.netty.server.Values;
 import com.revosoft.netty.server.http.routing.WebRouter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class BookerWebRouter implements WebRouter {
 
-    public Object routeRequest (String uri, Values values) {
+    public Object routeRequest (String uri, String valueJson) {
 
         if(uri.equals("/revoweb/booker")) {
             return "{\n\r" +

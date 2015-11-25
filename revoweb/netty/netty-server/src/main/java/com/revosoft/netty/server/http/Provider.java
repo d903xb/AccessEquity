@@ -11,13 +11,13 @@ public class Provider implements Callable<Object> {
 
     private final String path;
 
-    private final Values values;
+    private final String valueJson;
 
     private final WebRouter router;
 
-    public Provider(String path, Values values, WebRouter router) {
+    public Provider(String path, String valueJson, WebRouter router) {
         this.path = path;
-        this.values = values;
+        this.valueJson = valueJson;
         this.router = router;
     }
 
@@ -25,8 +25,7 @@ public class Provider implements Callable<Object> {
     public Object call() throws Exception {
         Object res = null;
 
-        System.out.println("In Provider, call");
-        res = router.routeRequest(path, values);
+        res = router.routeRequest(path, valueJson);
 
         return res;
         // throw new RuntimeException("Hello, Exception!");
