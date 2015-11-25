@@ -2,12 +2,15 @@ package com.revosoft.web.database.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import com.revosoft.web.domain.Token;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -18,10 +21,10 @@ public class TokenRepositoryImpl implements TokenRepository {
     private JdbcOperations jdbcOperations;
 
     public void create(String username, String hash, LocalDateTime localDateTime) {
-        String SQL = "insert into Token (username, tokenHash, expiryDateTime) values (?, ?, ?)";
+        String SQL = "insert into Token (username, tokenHash, expiryDateTime, activeStatus) values (?, ?, ?, ?)";
 
         try {
-            jdbcOperations.update(SQL, username, hash, localDateTime.toString());
+            jdbcOperations.update(SQL, username, hash, localDateTime.toString(), "true");
         }
         catch (Exception e) {
             log.info(e.getMessage());
@@ -30,11 +33,17 @@ public class TokenRepositoryImpl implements TokenRepository {
         return;
     }
 
-    public Token getToken(String username) {
-        String SQL = "select * from Token where username = ? and activeStatus = 'active'";
-        Token student = jdbcOperations.queryForObject(SQL,
-                new Object[]{username}, new TokenRowMapper());
-        return student;
+    public Token getActiveUserToken(String username) {
+        String SQL = "select * from Token where username = ? and activeStatus = true";
+
+        List<Token> tokens = jdbcOperations.query(SQL, new Object[]{username}, new TokenRowMapper());
+
+        if(tokens!=null && tokens.size()>0) {
+            log.info("Found Token : Username = " + tokens.get(0).getUserId() + ", Hash = " + tokens.get(0).getTokenHash() + " ExpiryDate = " + tokens.get(0).getExpiryDateTime());
+            return tokens.get(0);
+        }
+        return  null;
+
     }
 
     public List<Token> listTokens() {
@@ -56,7 +65,9 @@ public class TokenRepositoryImpl implements TokenRepository {
         public Token mapRow(ResultSet rs, int rowNum) throws SQLException {
             Token token = new Token();
             token.setUserId(rs.getString("username"));
-            token.setExpiryDateTime(LocalDateTime.ofInstant(rs.getDate("expiryDateTime").toInstant(), ZoneId.systemDefault()));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(rs.getString("expiryDateTime").substring(0, 19), formatter);
+            token.setExpiryDateTime(dateTime);
             token.setTokenHash(rs.getString("tokenHash"));
             return token;
         }

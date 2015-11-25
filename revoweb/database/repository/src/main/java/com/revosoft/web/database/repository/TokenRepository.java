@@ -10,7 +10,7 @@ public interface TokenRepository {
 
     void create(String username, String hash, LocalDateTime localDateTime);
 
-    Token getToken(String username);
+    Token getActiveUserToken(String username);
 
     List<Token> listTokens();
 

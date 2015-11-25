@@ -4,6 +4,7 @@ package com.revosoft.web.authentication.web.routing;
 import com.revosoft.netty.server.http.routing.WebRouter;
 import com.revosoft.web.database.repository.TokenRepository;
 import com.revosoft.web.domain.Credentials;
+import com.revosoft.web.domain.Token;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,12 +31,22 @@ public class AuthenticationWebRouter implements WebRouter {
                         ObjectMapper objectMapper = new ObjectMapper();
                         final Credentials credentials = objectMapper.readValue(valueJson, Credentials.class);
 
-                        tokenRepository.create("stephen.day@dunelm.org.uk",
-                                UUID.randomUUID().toString(), LocalDateTime.from(LocalDateTime.now()));
+                        Token token = tokenRepository.getActiveUserToken(credentials.getUsername());
+                        if(token!=null) {
+                                return "{\n" +
+                                        "\t\"Hash\" : \"" + token.getTokenHash() + "\"\n" +
+                                        "}";
+                        }
+                        else {
+                                final String newToken = UUID.randomUUID().toString();
+                                tokenRepository.create(credentials.getUsername(),
+                                        newToken, LocalDateTime.from(LocalDateTime.now()));
 
-                       return "{\n" +
-                               "\t\"Hash\" : \"" + hashText(credentials.getPassword()) + "\"\n" +
-                               "}";
+                                return "{\n" +
+                                        "\t\"Hash\" : \"" + newToken + "\"\n" +
+                                        "}";
+
+                        }
                 }
 
                 return "No Services for this URI";
